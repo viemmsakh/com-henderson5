@@ -1,0 +1,30 @@
+module.exports = {
+  root: true,
+  env: { browser: true, es2020: true },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+    'plugin:react/recommended',
+    'eslint-config-google',
+  ],
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
+  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  settings: { react: { version: '18.2' } },
+  plugins: ['react-refresh', 'eslint-plugin-react'],
+  rules: {
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
+    ],
+    'strict': [ 'error', 'global' ],
+    'no-inner-declarations': 'off',
+    'require-jsdoc': 'off',
+    'max-len': ['warn', { 'code': 120 }],
+    'object-curly-spacing': [ 'error', 'always' ],
+    'arrow-spacing': [ 'error', { before: true, after: true } ],
+    'operator-linebreak': [ 'error', 'before' ],
+    'space-infix-ops': 'error',
+    'indent': [ 'error', 2 ],
+  },
+}

@@ -3,13 +3,19 @@
   "version": "1.0.0",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "jsdoc": "jsdoc script.js --destination docs"
+    "eslint": "eslint ./src/script.ts",
+    "jsdoc": "tsc && jsdoc dist/script.js --destination ./dist/docs",
+    "tsc": "tsc"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "jsdoc": "^4.0.4"
+    "@eslint/js": "^9.23.0",
+    "eslint": "^9.23.0",
+    "globals": "^16.0.0",
+    "jsdoc": "^4.0.4",
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.27.0"
   }
 }

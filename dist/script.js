@@ -15,6 +15,11 @@ const progressBar = document.querySelector('.progress');
  */
 const statusText = document.querySelector('.status');
 /**
+ * DOM element representing the time text
+ * @type {HTMLElement}
+ */
+const timeText = document.querySelector('.time');
+/**
  * MediaQueryList object that detects portrait orientation
  * @type {MediaQueryList}
  */
@@ -46,13 +51,15 @@ const updateContainerOrientation = () => {
     }
     if (height > width) {
         // Portrait Orientation
-        container.style.transform = 'rotate(90deg)';
-        container.style.width = `${Math.floor(height * 0.75)}px`;
+        //container.style.transform = 'rotate(90deg)';
+        //container.style.width = `${Math.floor(height * 0.75)}px`;
+        container.classList.add('portrait');
     }
     else {
         // Landscape Orientation
-        container.style.transform = 'rotate(0deg)';
-        container.style.width = '75%';
+        //container.style.transform = 'rotate(0deg)';
+        //container.style.width = '75%';
+        container.classList.remove('portrait');
     }
 };
 /**
@@ -71,6 +78,12 @@ const updateDateTime = () => {
     }
     if (statusText) {
         statusText.innerHTML = `${Number(progress * 100).toFixed(2)}%`;
+    }
+    if (timeText) {
+        const h = hours.toString().padStart(2, '0');
+        const m = minutes.toString().padStart(2, '0');
+        const s = seconds.toString().padStart(2, '0');
+        timeText.innerHTML = `${h}:${m}:${s}`;
     }
 };
 // Event Listeners

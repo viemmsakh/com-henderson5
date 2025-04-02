@@ -74,7 +74,7 @@ const updateDateTime = () => {
     const elapsed = hours * 3600 + minutes * 60 + seconds;
     const progress = elapsed / 86400;
     if (progressBar) {
-        progressBar.setAttribute('style', `transform: scaleX(${progress})`);
+        progressBar.setAttribute('style', `transform: scaleX(${Number(progress).toFixed(3)})`);
     }
     if (statusText) {
         statusText.innerHTML = `${Number(progress * 100).toFixed(2)}%`;
@@ -85,12 +85,12 @@ const updateDateTime = () => {
         const s = seconds.toString().padStart(2, '0');
         timeText.innerHTML = `${h}:${m}:${s}`;
     }
+    requestAnimationFrame(updateDateTime);
 };
 // Event Listeners
 document.addEventListener('DOMContentLoaded', updateContainerOrientation);
 portraitMatcher.addEventListener('change', debounce(updateContainerOrientation, 100));
 window.addEventListener('resize', debounce(updateContainerOrientation, 100));
 // Initialize and set timers
-updateDateTime();
-setInterval(updateDateTime, 1000);
+requestAnimationFrame(updateDateTime);
 //# sourceMappingURL=script.js.map

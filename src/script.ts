@@ -85,7 +85,7 @@ const updateDateTime = (): void => {
   const progress: number = elapsed / 86400;
 
   if (progressBar) {
-    progressBar.setAttribute('style', `transform: scaleX(${progress})`);
+    progressBar.setAttribute('style', `transform: scaleX(${Number(progress).toFixed(3)})`);
   }
   if (statusText) {
     statusText.innerHTML = `${Number(progress * 100).toFixed(2)}%`;
@@ -96,6 +96,7 @@ const updateDateTime = (): void => {
     const s = seconds.toString().padStart(2, '0');
     timeText.innerHTML = `${h}:${m}:${s}`;
   }
+  requestAnimationFrame(updateDateTime);
 };
 
 // Event Listeners
@@ -104,5 +105,4 @@ portraitMatcher.addEventListener('change', debounce(updateContainerOrientation, 
 window.addEventListener('resize', debounce(updateContainerOrientation, 100));
 
 // Initialize and set timers
-updateDateTime();
-setInterval(updateDateTime, 1000);
+requestAnimationFrame(updateDateTime);
